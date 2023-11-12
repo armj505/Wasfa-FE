@@ -31,10 +31,7 @@ const register = async (userInfo) => {
 };
 
 const logIn = async (userInfo) => {
-  const { data } = await instance.post(
-    // "", add the login link from the backend
-    userInfo
-  );
+  const { data } = await instance.post("/api/user/login", userInfo);
   storeToken(data.token);
   return data;
 };
