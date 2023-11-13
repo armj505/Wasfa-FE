@@ -20,12 +20,10 @@ const checkToken = () => {
 };
 
 const register = async (userInfo) => {
-  const formData = new FormData();
-  for (const key in userInfo) formData.append(key, userInfo[key]);
-  const { data } = await instance.post(
-    // "", add the register link from the backend
-    formData
-  );
+  // const formData = new FormData();
+  // for (const key in userInfo) formData.append(key, userInfo[key]);
+  const { data } = await instance.post("/api/user/register", userInfo);
+  // formData
   storeToken(data.token);
   return data;
 };
