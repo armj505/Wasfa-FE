@@ -6,18 +6,26 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
+  const [checkPassword, setCheckPassword] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const { user, setUser } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    if (e.target.name === "image") {
-      setUserInfo({ ...userInfo, [e.target.name]: e.target.files[0] });
-    } else {
-      setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
-      console.log(e.target.value);
-    }
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+    console.log(e.target.value);
   };
-  const { mutate: registerfn, error } = useMutation({
+
+  const handlePasswordMatch = (e) => {
+    setCheckPassword(e.target.value);
+  };
+
+  if (checkPassword !== userInfo.password) {
+    setPasswordMatch(false);
+  }
+
+  const { mutate: registerfn } = useMutation({
     mutationKey: ["register"],
     mutationFn: () => register(userInfo),
     onSuccess: () => setUser(true),
@@ -44,11 +52,8 @@ const Register = () => {
               Create an account
             </div>
             <h1 className="font-sans font-black text-center">
-              Sign up to save and review your favorite recipes.{" "}
+              Sign up to save and review your favorite recipes.
             </h1>
-            {/* <h1 className="font-sans text-2xl font-black text-center mt-4">
-            Register
-          </h1> */}
 
             <form onSubmit={handleForm} className="mt-8 mx-auto">
               <label htmlFor="email" className="my-4 flex content-center gap-4">
@@ -78,7 +83,6 @@ const Register = () => {
                   required
                 ></input>
               </label>
-              {/* password  */}
               <label
                 htmlFor="password"
                 className="my-4 flex content-center gap-4"
@@ -107,12 +111,12 @@ const Register = () => {
                   name="confirm_password"
                   id="confirm_password"
                   type="password"
-                  onChange={handleChange}
+                  onChange={handlePasswordMatch}
                   className="w-2/3 mt-1 block px-3 py-2 bg-white border border-slate-900 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
                   required
                 ></input>
               </label>
-
+              {passwordMatch ? "" : <div>password not matching</div>}
               <span className="text-center">
                 Have an account?
                 <Link
@@ -125,12 +129,11 @@ const Register = () => {
 
               <button
                 type="submit"
-                onClick={registerfn}
+                onClick={(e) => handleForm(e)}
                 className="bg-yellow-500 py-2 px-4 rounded-lg hover:bg-white hover:text-yellow-500 w-full my-8"
               >
                 Register
               </button>
-              {/* <h1 className="text-red-700 ">{error?.message}</h1> */}
             </form>
           </div>
         </div>
@@ -138,5 +141,4 @@ const Register = () => {
     </div>
   );
 };
-
 export default Register;
