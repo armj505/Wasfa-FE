@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import { checkToken } from "./api/auth";
 import UserContext from "./context/UserContext";
 import { Route, Routes } from "react-router-dom";
+import Recipes from "./components/Recipes";
+import CreateRecipe from "./components/CreateRecipe";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -25,6 +27,8 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/myprofile" Component={Profile} />
           <Route path="/login" Component={LogIn} />
+          <Route path="/recipes" Component={Recipes} />
+          <Route path="/crecipe" Component={CreateRecipe} />
         </Routes>
         <Footer />
       </div>
