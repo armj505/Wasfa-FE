@@ -1,8 +1,21 @@
 import { NavLink } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import { getRecipes } from "../api/recipes";
+import RecipeItem from "./RecipeItem";
 
 const Recipes = () => {
+  const { data: recipes } = useQuery({
+    queryKey: ["recipes"],
+    queryFn: () => {
+      getRecipes();
+    },
+  });
+
   return (
     <div className="text-gray-600 body-font">
+      {recipes?.map((recipe) => {
+        <RecipeItem recipe={recipe} key={recipe._id} />;
+      })}
       <div className="container px-5 py-5 mx-auto max-w-7x1 bg-gray-300">
         <div className="flex flex-wrap w-full mb-4 p-4">
           <div className="w-full mb-6 lg:mb-0 flex flex-wrap gap-4">
