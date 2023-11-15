@@ -13,6 +13,7 @@ const Recipes = () => {
     <RecipeItem recipe={recipe} key={recipe._id} />
   ));
   console.log(recipeList);
+
   return (
     <div className="text-gray-600 body-font">
       <div className="container px-5 py-5 mx-auto max-w-7x1 bg-gray-300">
