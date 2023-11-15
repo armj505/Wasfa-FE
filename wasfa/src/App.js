@@ -11,6 +11,7 @@ import UserContext from "./context/UserContext";
 import { Route, Routes } from "react-router-dom";
 import Recipes from "./components/Recipes";
 import CreateRecipe from "./components/CreateRecipe";
+import OneRecipe from "./components/OneRecipe";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" Component={LogIn} />
           <Route path="/recipes" Component={Recipes} />
           <Route path="/crecipe" Component={CreateRecipe} />
+          <Route path="/recipe/:recipeId" Component={OneRecipe} />
         </Routes>
         <Footer />
       </div>
