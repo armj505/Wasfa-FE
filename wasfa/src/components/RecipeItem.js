@@ -1,8 +1,8 @@
 import React from "react";
 import { base_URL } from "../api";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const RecipeItem = ({ recipe, recipeId }) => {
+const RecipeItem = ({ recipe }) => {
   return (
     <div className="xl:w-1/3 md:w-1/2 p-4">
       <div className="bg-white p-6 rounded-lg flex flex-col justify-center items-center">
@@ -18,7 +18,7 @@ const RecipeItem = ({ recipe, recipeId }) => {
             data-te-ripple-init
             data-te-ripple-color="light"
           >
-            <NavLink to={"/recipe/:recipeId"}> View Recipe</NavLink>
+            <Link to={`/recipe/${recipe.id}`}> View Recipe</Link>
           </button>
         </div>
       </div>
