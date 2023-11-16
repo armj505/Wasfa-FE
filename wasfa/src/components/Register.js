@@ -120,16 +120,6 @@ const Register = () => {
                   ></input>
                 </label>
 
-                <span className="text-center">
-                  Have an account?
-                  <Link
-                    to="/login"
-                    className="hover:text-slate-500 cursor-pointer hover:underline"
-                  >
-                    <button> Log in</button>
-                  </Link>
-                </span>
-
                 <button
                   type="submit"
                   onClick={registerfn}

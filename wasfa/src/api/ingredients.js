@@ -11,7 +11,7 @@ const getIngredientById = async (IngredientId) => {
 const updtIngredient = async (ingredient) => {
   const { data } = await instance.put(
     `/api/ingredient/${ingredient._id}`,
-    Ingredient
+    ingredient
   );
   return data;
 };

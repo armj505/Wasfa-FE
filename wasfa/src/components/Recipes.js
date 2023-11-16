@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getRecipes } from "../api/recipes";
 import RecipeItem from "./RecipeItem";
+import React from "react";
+import ListCategories from "./ListCategories";
+import ListIngredients from "./ListIngredients";
 
 const Recipes = () => {
   const { data: recipes } = useQuery({
@@ -25,7 +28,7 @@ const Recipes = () => {
         <div className="container px-5 py-5 mx-auto max-w-7x1 bg-gray-300">
           <div className="flex flex-wrap w-full mb-4 p-4 ">
             <div className="w-full mb-6 lg:mb-0 flex flex-wrap gap-4 justify-between">
-              <h1 className="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900 ">
+              <h1 className="sm:text-4xl text-5xl font-bold title-font mb-2 text-gray-900 ">
                 All Recipes
               </h1>
               <button
@@ -41,21 +44,16 @@ const Recipes = () => {
                 <NavLink to={"/crecipe"}>Create Recipe</NavLink>
               </button>
             </div>
-            <div className="h-1 w-[100px] bg-indigo-500 rounded"></div>
-          </div>
 
-          {/* <div className="flex flex-wrap -m-4">
-          <div className="xl:w-1/3 md:w-1/2 p-4">
-            <div className="bg-white p-6 rounded-lg"> */}
-          <div className="xl:w-1/3 md:w-1/2 p-4">
-            <h1> {recipeList}</h1>
+            <div className="w-[700px] h-[200px] border-2 border-black">
+              <ListCategories />
+              <ListIngredients />
+            </div>
           </div>
+          <div className="flex flex-wrap justify-evenly"> {recipeList}</div>
         </div>
       </div>
-      //{" "}
     </div>
-    //   </div>
-    // </div>
   );
 };
 

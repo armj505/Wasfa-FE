@@ -42,7 +42,7 @@ const CreateRecipe = () => {
               <h1 className="sm:text-4xl text-5xl font-medium font-bold title-font mb-2 text-gray-900  ">
                 Create Recipe
               </h1>
-              <div className="flex justify-center items-center h-1 w-[100px] bg-indigo-500 rounded "></div>
+              <div className=" h-1 w-[100px] bg-indigo-500 rounded "></div>
               <label
                 htmlFor="RecipeTitle"
                 className="my-4 flex content-center gap-4"
