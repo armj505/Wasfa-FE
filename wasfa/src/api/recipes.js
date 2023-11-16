@@ -8,8 +8,8 @@ const getOneRecipe = async (recipeId) => {
   const { data } = await instance.get(`/api/recipe/${recipeId}`);
   return data;
 };
-const getUserRecipes = async (recipeId) => {
-  const { data } = await instance.get(`/api/recipe/${recipeId}`);
+const getUserRecipes = async (userId) => {
+  const { data } = await instance.get(`/api/recipe/${userId}`);
   return data;
 };
 const createRecipe = async (recipe) => {
