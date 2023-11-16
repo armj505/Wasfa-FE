@@ -23,7 +23,7 @@ const LogIn = ({ showModal, setShowModal }) => {
   const handleForm = (e) => {
     e.preventDefault();
     logIn_();
-    navigate("/myprofile");
+    navigate("/");
   };
 
   if (!showModal) return "";

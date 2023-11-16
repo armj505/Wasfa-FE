@@ -26,7 +26,7 @@ const Register = () => {
   const handleForm = (e) => {
     e.preventDefault();
     registerfn();
-    navigate("/myprofile");
+    navigate("/");
   };
   return (
     <div
