@@ -20,10 +20,10 @@ const RecipeDetails = () => {
   return (
     <div className="pt-16 px-32">
       <h1 className="text-5xl font-black">{recipe.title}</h1>
-      <p>by {recipe.user}</p>
+      <p>by {recipe.user.username}</p>
       <div className="flex justify-between">
         <p className="pt-8 text-gray-600">Servings: {recipe.serving}</p>
-        <p className="pt-8 text-gray-600">Category: {recipe.category}</p>
+        <p className="pt-8 text-gray-600">Category: {recipe.category.name}</p>
       </div>
       <div className="flex justify-center">
         <img src={recipe.image} alt={recipe.title} />
@@ -33,7 +33,7 @@ const RecipeDetails = () => {
         <ul className="ps-16">
           {recipe.ingredients.map((ing) => (
             <li className="pb-2">
-              {ing.qty + " " + ing.measurement + ", " + ing.ingredient}
+              {ing.qty + " " + ing.measurement + ", " + ing.ingredient.name}
             </li>
           ))}
         </ul>
