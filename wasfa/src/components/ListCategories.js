@@ -16,12 +16,12 @@ const ListCategories = () => {
   console.log(categoryList);
 
   return (
-    <>
-      <h1 className="text-md mb-2 text-left px-2 text-blacks text-lg">
+    <div className="">
+      <h1 className="text-xl mb-4 text-left px-4 text-black font-semibold">
         Category List:
       </h1>
-      <div className="flex flex-row gap-2 px-2">{categoryList}</div>
-    </>
+      <div className="flex  flex-col gap-4 px-4">{categoryList}</div>
+    </div>
   );
 };
 

@@ -14,12 +14,12 @@ const ListIngredients = () => {
   ));
   console.log(ingredientList);
   return (
-    <>
-      <h1 className="text-md mb-2 text-left px-2 text-blacks text-lg">
+    <div className="pt-8">
+      <h1 className="text-xl font-semibold mb-2 text-left px-2 text-black">
         Ingredient List:
       </h1>
-      <div className="flex flex-row gap-2 px-2">{ingredientList}</div>
-    </>
+      <div className="flex  flex-col gap-2 px-2">{ingredientList}</div>
+    </div>
   );
 };
 

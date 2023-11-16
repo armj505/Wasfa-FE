@@ -44,13 +44,14 @@ const Recipes = () => {
                 <NavLink to={"/crecipe"}>Create Recipe</NavLink>
               </button>
             </div>
-
-            <div className="w-[700px] h-[200px] border-2 border-black">
-              <ListCategories />
-              <ListIngredients />
+            <div className="flex">
+              <div className="w-auto border-2  flex flex-col py-4 px-4">
+                <ListCategories />
+                <ListIngredients />
+              </div>
+              <div className="flex w-full justify-evenly">{recipeList}</div>
             </div>
           </div>
-          <div className="flex flex-wrap justify-evenly"> {recipeList}</div>
         </div>
       </div>
     </div>
