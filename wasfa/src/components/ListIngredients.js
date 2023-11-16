@@ -9,7 +9,7 @@ const ListIngredients = () => {
     queryFn: () => getAllIngredient(),
   });
 
-  const ingredientList = ingredients?.map((ingredient) => (
+  const ingredientList = ingredients?.map((ingredients) => (
     <IngredientsItem ingredients={ingredients} key={ingredients.__id} />
   ));
   console.log(ingredientList);
