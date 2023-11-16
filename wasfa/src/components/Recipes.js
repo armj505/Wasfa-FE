@@ -1,21 +1,29 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getRecipes } from "../api/recipes";
 import RecipeItem from "./RecipeItem";
-import React from "react";
+import React, { useState } from "react";
 import ListCategories from "./ListCategories";
 import ListIngredients from "./ListIngredients";
 
 const Recipes = () => {
-  const { data: recipes } = useQuery({
+  const [query, setQuery] = useState("");
+  const [searchParam, setSearchParam] = useSearchParams();
+  const filter = searchParam.get(`filter`);
+  const { data: recipeList_ } = useQuery({
     queryKey: ["recipes"],
     queryFn: () => getRecipes(),
   });
 
-  const recipeList = recipes?.map((recipe) => (
-    <RecipeItem recipe={recipe} key={recipe._id} />
-  ));
-  console.log(recipeList);
+  const recipes =
+    query !== ""
+      ? recipeList_
+          ?.filter((recipe) => recipe.title.includes(query))
+          .map((recipe) => <RecipeItem recipe={recipe} key={recipe._id} />)
+      : recipeList_?.map((recipe) => {
+          console.log(recipe.title);
+          return <RecipeItem recipe={recipe} key={recipe._id} />;
+        });
 
   return (
     <div
@@ -31,6 +39,11 @@ const Recipes = () => {
               <h1 className="sm:text-4xl text-5xl font-bold title-font mb-2 text-gray-900 ">
                 All Recipes
               </h1>
+              <input
+                className=" w-full mt-1 block px-3 py-2 bg-white border border-slate-900 rounded-md text-sm shadow-sm placeholder-slate-400 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500"
+                placeholder="Search Transactions"
+                onChange={(e) => setQuery(e.target.value)}
+              ></input>
               <button
                 className="inline-block bg-white rounded border-2 border-primary-100 px-6 pb-[6px] pt-2 text-xs font-large uppercase leading-normal text-primary-700 transition 
             duration-150 ease-in-out hover:border-primary-accent-100
@@ -49,7 +62,7 @@ const Recipes = () => {
                 <ListCategories />
                 <ListIngredients />
               </div>
-              <div className="flex w-full justify-evenly">{recipeList}</div>
+              <div className="flex w-full justify-evenly">{recipes}</div>
             </div>
           </div>
         </div>
